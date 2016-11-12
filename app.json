@@ -1,8 +1,8 @@
 {
-  "name": "Start on Heroku: Python",
-  "description": "A barebones Python app, which can easily be deployed to Heroku.",
+  "name": "Footstep : Github Event Tracker",
+  "description": "Footstep is an event tracker application, It will show you all your recent activity on github!",
   "image": "heroku/python",
-  "repository": "https://github.com/heroku/python-getting-started",
+  "repository": "https://github.com/amarlearning/Footstep",
   "keywords": ["python", "django" ],
   "addons": [ "heroku-postgresql" ]
 }
