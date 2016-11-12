@@ -1,0 +1,14 @@
+body {
+	background-color: #6f5499;
+}
+.navbar-brand {
+	font-family: 'Satisfy', cursive;
+	font-size: 30px;
+}
+.navbar-brand {
+	color: #563d7c !important;
+	font-weight: bold;
+}
+.nav li a {
+	color : #563d7c !important;
+}
