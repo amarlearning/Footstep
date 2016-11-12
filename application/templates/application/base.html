@@ -1,0 +1,47 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+		<link rel="icon"  type="image/png"  href="img/favicon.ico" />
+		<title>{% block username %}Footstep{% endblock %}</title>
+		<meta name="author" content="Amar Prakash Pandey">
+		<meta property="og:url" content="http://amarpandey.me"/>
+		<meta property="og:site_name" content="Amar Prakash Pandey (amarpandey)"/>
+		<meta property="og:title" content="Amar Prakash Pandey (amarpandey)"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:description" content="Amar Prakash Pandey is an undergraduate student, pursuing bachelor of technology degree in Computer Science and Engineering. I expect to graduate with a Bachelors degree in May 2017. I love to play with web technologies and create great user experiences. Feel free to contact me. "/>
+		<meta name="description" content="Amar Prakash Pandey is an undergraduate student, pursuing bachelor of technology degree in Computer Science and Engineering. I expect to graduate with a Bachelors degree in May 2017. I love to play with web technologies and create great user experiences. Feel free to contact me. ">
+		<meta name="keywords" content="Amar Prakash Pandey, Amar Pandey, amarpandey, amar pandey, amar prakash pandey, amarpandey007, amar.om1994, amar srmcem, web developer, amar lucknow, amarlearning, Github, pyhton, javascript, electron, nodejs, html5, css3, API, developer, pingetron, desktop application, pystalker, recipejaar, codechef, dfeojm, php game, abhivyakti, movie catalog, laptop selfi, make it short, gantavya, technopedia, desktop notification, speedometer, responsinator, CS 2017">
+		<link rel="stylesheet" href="{% static 'application/css/bootstrap.min.css' %}" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="{% static 'application/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Footstep</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="/">Home</a></li>
+						<li><a href="/">About</a></li>
+						<li><a href="/stats">User Stats</a></li>
+						<li><a href="http://amarpandey.me" target="_blank">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		{% block body %}
+		{% endblock %}
+		<script src="{% static 'application/js/jquery.min.js' %}"></script>	
+    	<script src="{% static 'application/js/bootstrap.min.js' %}"></script>
+	</body>
+</html>
