@@ -30,7 +30,7 @@ def stats(request):
 def username(request, username):
 	url = 'https://api.github.com/users/' + username + '/events'
 	serialized_data = urllib2.urlopen(url).read().decode("utf-8")
-	data = json.loads(json.dumps(serialized_data))
+	data = json.loads(serialized_data)
 	context = {
 		'username' : username,
 		'data' : data
