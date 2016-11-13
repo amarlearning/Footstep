@@ -3,10 +3,10 @@
 {% block body %}
 	<div class="cover container">
 		<div class="form-signin-div">
-			<form class="form-signin">
-				<label for="inputEmail" class="sr-only">Github Username</label>
-				<input type="email" id="inputEmail" class="form-control" placeholder="Github Username" required autofocus>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Footstep me!</button>
+			<form action="/" method="POST" class="form-signin">
+				{% csrf_token %}
+				{{ form }}
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Footstep me!" />
 			</form>
 		</div>
 	</div>
