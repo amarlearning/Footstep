@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django import forms
+import urllib2
+import json
 
 class NameForm(forms.Form):
     username = forms.CharField(
@@ -23,8 +25,14 @@ def index(request):
 def stats(request):
 	return redirect("/")
 
+# https://api.github.com/users/amarlearning/events?page=4
+
 def username(request, username):
+	url = 'https://api.github.com/users/' + username + '/events'
+	serialized_data = urllib2.urlopen(url).read().decode("utf-8")
+	data = json.loads(json.dumps(serialized_data))
 	context = {
-		'username' : username
+		'username' : username,
+		'data' : data
 	}
 	return render(request, 'application/stats.html', context)

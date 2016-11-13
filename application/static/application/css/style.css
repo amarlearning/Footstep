@@ -56,3 +56,9 @@ body > .container {
 	font-size: 18px !important;
 	border-radius : 2px !important;
 }
+.navBox {
+	width: 90vw;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #e7e7e7;
+}
