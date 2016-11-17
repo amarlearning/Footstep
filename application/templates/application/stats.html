@@ -1,17 +1,96 @@
-{{ data[0]['type'] }}
-
-<!-- {% extends 'application/base.html' %}
+{% extends 'application/base.html' %}
 
 {% block username %}
 	{{ username }} | Footstep
 {% endblock %}
 
 {% block body %}
-	<div class="navBox">
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation"><a href="#">Home</a></li>
-			<li role="presentation"><a href="#">Profile</a></li>
-			<li role="presentation"><a href="#">Messages</a></li>
-		</ul>
+	{% with data.0.type as name %} 
+		<div class="navBox">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation"><a href="#">All Events</a></li>
+				<li role="presentation"><a href="#">Comment Events</a></li>
+				<li role="presentation"><a href="#">Push Events</a></li>
+				<li class="view" role="presentation"><a href="#">Issue Events</a></li>
+				<li role="presentation"><a href="#">Create Events</a></li>
+				<li role="presentation"><a href="#">Delete Events</a></li>
+				<li role="presentation"><a href="#">Pull Request Events</a></li>
+			</ul>
+		</div>
+	{% endwith %}
+	
+	<div id="issueevent" class="container modify">
+		{% for data in json %}
+			{% if data.type == 'IssuesEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.payload.issue.url }}">{{ data.payload.issue.title }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">state : {{ data.payload.issue.state }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+							Opened a new issue in repo <a href="{{ data.repo.url }}">{{ data.repo.name }}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+		{% endfor %}
 	</div>
-{% endblock %} -->
+
+
+
+	<div id="allevent" class="hide container modify">
+		
+		<div class="box row">
+			<div class="col-sm-1 rightx">
+				<div class="image-box">
+					<a href="https://github.com/amarlearning" target="_blank">
+						<img class="fix-image" src="https://avatars.githubusercontent.com/u/9383897?">
+					</a>
+				</div>
+			</div>
+			<div class="col-sm-11">
+				<div class="eventHeading">
+					<a class="eventlink" href="">Create ALEXTASK.cpp</a>
+					<span class="label label-primary">PushEvent</span>
+				</div>
+				<div class="description">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="commentevent" class="hide container modify">
+	
+	</div>
+	<div id="pushevent" class="hide container modify">
+	
+	</div>
+	<div id="createevent" class="hide container modify">
+	
+	</div>
+	<div id="deleteevent" class="hide container modify">
+	
+	</div>
+	<div id="pullrequestevent" class="hide container modify">
+	
+	</div>
+	
+	<!-- <footer class="footer">
+		<div class="container">
+			<p class="text-muted">this project by <a href="http://github.com/amarlearning" target="_blank">@amarlearning</a> can be found on <a href="http://github.com/amarlearning/Footstep" target="_blank">GitHub</a></p>
+		</div>
+	</footer> -->
+
+{% endblock %}
