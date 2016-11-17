@@ -1,6 +1,28 @@
 body {
 	background-color: #6f5499;
 }
+.github-corner:hover .octo-arm{ 
+	animation:octocat-wave 560ms ease-in-out;
+	}
+@keyframes octocat-wave {
+	0%,100% {
+		transform:rotate(0);
+	}
+	20%,60% {
+		transform:rotate(-25deg);
+	}
+	40%,80% {
+		transform:rotate(10deg);
+	}
+}
+@media (max-width:500px) {
+	.github-corner:hover .octo-arm {
+		animation:none;
+	}
+	.github-corner .octo-arm { 
+		animation:octocat-wave 560ms ease-in-out;
+	}
+}
 .navbar-brand {
 	font-family: 'Satisfy', cursive;
 	font-size: 30px;
@@ -79,7 +101,7 @@ body > .container {
 }
 .box {
 	width: 100%;
-	height: 70px;
+	height: 80px;
 	background-color: #fff;
 }
 .rightx {
@@ -88,7 +110,7 @@ body > .container {
 	background-color: #563d7c;
 }
 .image-box {
-	height:70px;
+	height:80px;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 100%;
@@ -101,10 +123,11 @@ body > .container {
 .eventHeading {
 	width : 100%;
 	height: 30px;
+	padding-top: 5px;
 	border-bottom: 1px solid #eee;
 }
 .eventlink {
-	font-size: 20px;
+	font-size: 16px;
 	color : #563d7c;
 	cursor: pointer;
 }
@@ -112,7 +135,7 @@ body > .container {
 	text-decoration: none;
 }
 .label {
-	margin-left: 10px !important;
+	margin-left: 5px !important;
 	margin-top: -5px;
 }
 .description {
