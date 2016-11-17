@@ -1,5 +1,5 @@
 {% extends 'application/base.html' %}
-
+{% load githuburl %}
 {% block username %}
 	{{ username }} | Footstep
 {% endblock %}
@@ -32,13 +32,15 @@
 					</div>
 					<div class="col-sm-11">
 						<div class="eventHeading">
-							<a class="eventlink" href="{{ data.payload.issue.url }}">{{ data.payload.issue.title }}</a>
+							<a class="eventlink" href="{{ data.payload.issue.url|githuburl }}" target="_blank">{{ data.payload.issue.title }}</a>
 							<span class="label label-success">{{ data.type }}</span>
 							<span class="label label-default">state : {{ data.payload.issue.state }}</span>
 							<span class="label label-primary">repo : {{ data.repo.name }}</span>
 						</div>
 						<div class="description">
-							Opened a new issue in repo <a href="{{ data.repo.url }}">{{ data.repo.name }}</a>
+								Opened a new issue in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }}
+								</a>
 						</div>
 					</div>
 				</div>
@@ -50,25 +52,6 @@
 
 
 	<div id="allevent" class="hide container modify">
-		
-		<div class="box row">
-			<div class="col-sm-1 rightx">
-				<div class="image-box">
-					<a href="https://github.com/amarlearning" target="_blank">
-						<img class="fix-image" src="https://avatars.githubusercontent.com/u/9383897?">
-					</a>
-				</div>
-			</div>
-			<div class="col-sm-11">
-				<div class="eventHeading">
-					<a class="eventlink" href="">Create ALEXTASK.cpp</a>
-					<span class="label label-primary">PushEvent</span>
-				</div>
-				<div class="description">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</div>
-			</div>
-		</div>
 
 	</div>
 	<div id="commentevent" class="hide container modify">
