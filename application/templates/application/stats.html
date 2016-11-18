@@ -1,5 +1,6 @@
 {% extends 'application/base.html' %}
 {% load githuburl %}
+{% load makeurl %}
 {% block username %}
 	{{ username }} | Footstep
 {% endblock %}
@@ -8,24 +9,26 @@
 	{% with data.0.type as name %} 
 		<div class="navBox">
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation"><a href="#">All Events</a></li>
-				<li role="presentation"><a href="#">Comment Events</a></li>
-				<li role="presentation"><a href="#">Push Events</a></li>
-				<li class="view" role="presentation"><a href="#">Issue Events</a></li>
-				<li role="presentation"><a href="#">Create Events</a></li>
-				<li role="presentation"><a href="#">Delete Events</a></li>
-				<li role="presentation"><a href="#">Pull Request Events</a></li>
+				<li id ="all" class="common" role="presentation"><a href="#">All Events</a></li>
+				<li id ="comment" class="common" role="presentation"><a href="#">Comment Events</a></li>
+				<li id ="push" class="common" role="presentation"><a href="#">Push Events</a></li>
+				<li id ="issue"  class="common" role="presentation"><a href="#">Issue Events</a></li>
+				<li id = "create"  class="common" role="presentation"><a href="#">Create Events</a></li>
+				<li id = "delete"  class="common" role="presentation"><a href="#">Delete Events</a></li>
+				<li id = "pullrequest"  class="common" role="presentation"><a href="#">Pull Request Events</a></li>
 			</ul>
 		</div>
 	{% endwith %}
-	
+	<div id="allevent" class="container modify">
+		<h1>All Events</h1>
+	</div>
 	<div id="issueevent" class="container modify">
 		{% for data in json %}
 			{% if data.type == 'IssuesEvent' %}
 				<div class="box row">
 					<div class="col-sm-1 rightx">
 						<div class="image-box">
-							<a href="{{ data.actor.url }}" target="_blank">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
 								<img class="fix-image" src="{{ data.actor.avatar_url }}">
 							</a>
 						</div>
@@ -48,32 +51,73 @@
 			{% endif %}
 		{% endfor %}
 	</div>
-
-
-
-	<div id="allevent" class="hide container modify">
-
+	<div id="commentevent" class="container modify">
+		<h1>Comment Events</h1>
 	</div>
-	<div id="commentevent" class="hide container modify">
-	
+	<div id="pushevent" class="container modify">
+		<h1>Push Events</h1>
 	</div>
-	<div id="pushevent" class="hide container modify">
-	
+	<div id="createevent" class="container modify">
+		{% for data in json %}
+			{% if data.type == 'CreateEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.repo.url|makeurl:data.payload.ref }}" target="_blank">{{ data.payload.ref }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">master_branch: {{ data.payload.master_branch }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Created new branch in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }} 
+								</a> named 
+								<a href="{{ data.repo.url|makeurl:data.payload.ref }}">{{data.payload.ref}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+		{% endfor %}
 	</div>
-	<div id="createevent" class="hide container modify">
-	
+	<div id="deleteevent" class="container modify">
+		{% for data in json %}
+			{% if data.type == 'DeleteEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink">{{ data.payload.ref }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-danger">status: Deleted</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Deleted a branch in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }} 
+								</a> named 
+								<a>{{data.payload.ref}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+		{% endfor %}
 	</div>
-	<div id="deleteevent" class="hide container modify">
-	
+	<div id="pullrequestevent" class="container modify">
+		<h1>Pull Request Events</h1>
 	</div>
-	<div id="pullrequestevent" class="hide container modify">
-	
-	</div>
-	
-	<!-- <footer class="footer">
-		<div class="container">
-			<p class="text-muted">this project by <a href="http://github.com/amarlearning" target="_blank">@amarlearning</a> can be found on <a href="http://github.com/amarlearning/Footstep" target="_blank">GitHub</a></p>
-		</div>
-	</footer> -->
-
 {% endblock %}
