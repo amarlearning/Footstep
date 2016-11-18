@@ -25,8 +25,6 @@ def index(request):
 def stats(request):
 	return redirect("/")
 
-# https://api.github.com/users/amarlearning/events?page=4
-
 def username(request, username):
 	url = 'https://api.github.com/users/' + username + '/events'
 	serialized_data = urllib2.urlopen(url).read().decode("utf-8")

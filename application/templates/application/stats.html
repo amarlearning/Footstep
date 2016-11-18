@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-	{% with data.0.type as name %} 
 		<div class="navBox">
 			<ul class="nav nav-tabs" role="tablist">
 				<li id ="all" class="common" role="presentation"><a href="#">All Events</a></li>
@@ -19,9 +18,112 @@
 				<li id = "pullrequest"  class="common" role="presentation"><a href="#">Pull Request Events</a></li>
 			</ul>
 		</div>
-	{% endwith %}
 	<div id="allevent" class="container modify">
-		<h1>All Events</h1>
+		{% for data in json %}
+			{% if data.type == 'IssuesEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.payload.issue.url|githuburl }}" target="_blank">{{ data.payload.issue.title }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">state : {{ data.payload.issue.state }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Opened a new issue in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }}
+								</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+			{% if data.type == 'PushEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.payload.commits.0.url }}" target="_blank">{{ data.payload.commits.0.message }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">branch: {{ data.payload.ref|branch }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Created a new commit in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }} 
+								</a> on branch 
+								<a href="{{ data.repo.url|makeurl:data.payload.ref }}">{{ data.payload.ref|branch }}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+			{% if data.type == 'CreateEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.repo.url|makeurl:data.payload.ref }}" target="_blank">{{ data.payload.ref }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">master_branch: {{ data.payload.master_branch }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Created new branch in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }} 
+								</a> named 
+								<a href="{{ data.repo.url|makeurl:data.payload.ref }}">{{data.payload.ref}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+			{% if data.type == 'DeleteEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink">{{ data.payload.ref }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-danger">status: Deleted</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Deleted a branch in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }} 
+								</a> named 
+								<a>{{data.payload.ref}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+		{% endfor %}
 	</div>
 	<div id="issueevent" class="container modify">
 		{% for data in json %}
