@@ -26,7 +26,7 @@ def stats(request):
 	return redirect("/")
 
 def username(request, username):
-	url = 'https://api.github.com/users/' + username + '/events'
+	url = 'https://api.github.com/users/' + username + '/events?page=2'
 	serialized_data = urllib2.urlopen(url).read().decode("utf-8")
 	data = json.loads(serialized_data)
 

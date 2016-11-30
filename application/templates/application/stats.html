@@ -300,6 +300,32 @@
 		{% endfor %}
 	</div>
 	<div id="pullrequestevent" class="container modify">
-		<h1>Pull Request Events</h1>
+		{% for data in json %}
+			{% if data.type == 'PullRequestEvent' %}
+				<div class="box row">
+					<div class="col-sm-1 rightx">
+						<div class="image-box">
+							<a href="{{ data.actor.url|githuburl }}" target="_blank">
+								<img class="fix-image" src="{{ data.actor.avatar_url }}">
+							</a>
+						</div>
+					</div>
+					<div class="col-sm-11">
+						<div class="eventHeading">
+							<a class="eventlink" href="{{ data.payload.issue.url|githuburl }}" target="_blank">{{ data.payload.issue.title }}</a>
+							<span class="label label-success">{{ data.type }}</span>
+							<span class="label label-default">state : {{ data.payload.issue.state }}</span>
+							<span class="label label-primary">repo : {{ data.repo.name }}</span>
+						</div>
+						<div class="description">
+								Opened a new issue in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+									{{ data.repo.name }}
+								</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap20"></div>
+			{% endif %}
+		{% endfor %}
 	</div>
 {% endblock %}
