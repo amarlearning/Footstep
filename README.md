@@ -1,5 +1,5 @@
+<img src="https://raw.githubusercontent.com/amarlearning/Footstep/master/screenshots/brand_logo.png" alt="Brand Logo Footstep">
 <h4 align="center">[Gihtub Event tracking application built using Django]</h4>
-
 <p align="center">
 <a href="http://amarlearning.mit-license.org/"><img src="https://img.shields.io/pypi/l/pyzipcode-cli.svg" alt="mit license"></a>
 <a href="https://github.com/amarlearning/Footstep/issues"><img src="https://camo.githubusercontent.com/926d8ca67df15de5bd1abac234c0603d94f66c00/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f6e747269627574696f6e732d77656c636f6d652d627269676874677265656e2e7376673f7374796c653d666c6174" alt="Issue"></a>
@@ -12,8 +12,6 @@ Footstep is a very basic event tracking application built using Python on the to
   - [To-do](#to-do)
 - [Issues](#issues)
 - [License](#license)
-
-
 ***
 
 ##Demo
@@ -24,14 +22,14 @@ Footstep Heroku link : [:arrow_up:\[Link\]](https://footstep.herokuapp.com/)
 ***
 
 ## Contributing
-[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Pingetron#pingetron)
+[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Footstep#Footstep)
 
 > All contributions accepted.
 
 ***
 
 ## Issues
-[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Pingetron#pingetron)
+[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Footstep#Footstep)
 
 You can report the bugs at the [issue tracker](https://github.com/amarlearning/Pingetron/issues)
 
@@ -42,7 +40,7 @@ You can [tweet me](https://twitter.com/iamarpandey) if you can't get it to work.
 ***
 
 ##License
-[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Pingetron#pingetron)
+[:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Footstep#Footstep)
 
 Built with ♥ by Amar Prakash Pandey([@amarlearning](http://github.com/amarlearning)) under [MIT License](http://amarlearning.mit-license.org/) 
 
