@@ -3,6 +3,7 @@
 {% load makeurl %}
 {% load branch %}
 {% load truncate %}
+{% load pullrequest %}
 {% block username %}
 	{{ username }} | Footstep
 {% endblock %}
@@ -312,13 +313,13 @@
 					</div>
 					<div class="col-sm-11">
 						<div class="eventHeading">
-							<a class="eventlink" href="{{ data.payload.issue.url|githuburl }}" target="_blank">{{ data.payload.issue.title }}</a>
+							<a class="eventlink" href="{{ data.payload.pull_request.commits_url|pullrequest }}" target="_blank">{{ data.payload.pull_request.title }}</a>
 							<span class="label label-success">{{ data.type }}</span>
-							<span class="label label-default">state : {{ data.payload.issue.state }}</span>
+							<span class="label label-default">state : {{ data.payload.pull_request.state }}</span>
 							<span class="label label-primary">repo : {{ data.repo.name }}</span>
 						</div>
 						<div class="description">
-								Opened a new issue in repo <a href="{{ data.repo.url|githuburl }}" target="_blank">
+								Opened a new pull request in repo <a href="{{ data.payload.pull_request.commits_url|pullrequest }}" target="_blank">
 									{{ data.repo.name }}
 								</a>
 						</div>
