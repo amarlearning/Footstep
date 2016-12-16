@@ -12,6 +12,7 @@ Footstep is a very basic event tracking application built using Python on the to
   - [To-do](#to-do)
 - [Issues](#issues)
 - [License](#license)
+
 ***
 
 ##Demo
