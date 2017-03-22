@@ -15,7 +15,7 @@ Footstep is a very basic event tracking application built using Python on the to
 
 ***
 
-##Demo
+## Demo
 [:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Footstep#Footstep)
 
 Footstep Heroku link : [:arrow_up:\[Link\]](https://footstep.herokuapp.com/)
