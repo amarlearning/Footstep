@@ -6,7 +6,7 @@
 </p>
 Footstep is a very basic event tracking application built using Python on the top of Django. I built this application to keep track of all my events on github [espically comments :p]. All you events on Github are divided sectionn wise, so that you can track them easiely. Footstep is currenlty deployed on Heroku!
 
-##Index
+## Index
 - [Demo](#demo)
 - [Contributing](#contributing)
   - [To-do](#to-do)
