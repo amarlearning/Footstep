@@ -59,7 +59,7 @@
 					</div>
 					<div class="col-sm-11">
 						<div class="eventHeading">
-							<a class="eventlink" href="{{ data.payload.commits.0.url }}" target="_blank">{{ data.payload.commits.0.message }}</a>
+							<a class="eventlink" href="{{ data.payload.commits.0.url|githuburl }}" target="_blank">{{ data.payload.commits.0.message }}</a>
 							<span class="label label-success">{{ data.type }}</span>
 							<span class="label label-default">branch: {{ data.payload.ref|branch }}</span>
 							<span class="label label-primary">repo : {{ data.repo.name }}</span>
