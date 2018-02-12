@@ -40,7 +40,7 @@ You can [tweet me](https://twitter.com/iamarpandey) if you can't get it to work.
 
 ***
 
-##License
+## License
 [:arrow_up:\[Back to Top\]](https://github.com/amarlearning/Footstep#Footstep)
 
 Built with ♥ by Amar Prakash Pandey([@amarlearning](http://github.com/amarlearning)) under [MIT License](http://amarlearning.mit-license.org/) 
